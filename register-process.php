@@ -1,6 +1,6 @@
 <?php
 
-require('db_connect.php'); // Connect to our DB
+require('functions.php');
 require('user_validator.php'); 
 require('input_validator.php');
 
@@ -8,9 +8,9 @@ require('input_validator.php');
 // lets create a new instacne of InputVAlidator    
 $inputValidation = new InputValidator($_POST,$_FILES);
 
-// Connect to the DB
-$Conn;
-ConnectDB($Conn); 
+
+// Connecting to our db
+$Conn= $db->con;
 
 // Lets validate the entries
 if(isset($_POST['submit'])){

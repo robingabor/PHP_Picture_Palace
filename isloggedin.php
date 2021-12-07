@@ -6,7 +6,7 @@
 
     if(isset($_SESSION['user'])){                           
                         
-        echo "<div class='col'><h3 style='color:white;'>Welcome, ".$_SESSION['user']['userName']."<h3></div>";
+        echo "<div class='col'><h3 style='color:white;'>Welcome, ".$_SESSION['user']['name']."<h3></div>";
         echo "<a class='navbar-brand' href='logout.php'><button class='btn btn-primary' type='submit'>Log out <i class='fas fa-sign-in-alt'></i></button></a>";
                         
     }else{

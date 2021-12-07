@@ -8,6 +8,6 @@ $_SESSION = array();
 
 session_destroy();
 
-header('Location: index2.php');
+header('Location: index.php');
 
 ?>

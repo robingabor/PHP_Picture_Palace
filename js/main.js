@@ -9,7 +9,7 @@ $(document).ready(function(e){
         readURL(this);
     });
 
-    // if the document is finicshed loading
+    // if the document is finished loading
     // and the form was submitted
     // then we call our handler function
     $("#reg-form").submit(function(event){
@@ -21,7 +21,7 @@ $(document).ready(function(e){
         }else{
             $error.text("Password not match");
             // if our password and the confirm psw are not the same
-            // we have to prevent our form from it default begavior
+            // we have to prevent our form from it default behavior
             // in other words: the form wont be submitted
             event.preventDefault();
         }

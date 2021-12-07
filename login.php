@@ -1,77 +1,62 @@
 <?php
 
-session_start();
-
 require('webpage.php');
+require('functions.php');
 require('login-process.php');
 
-$Conn;
-ConnectDB($Conn); // Connect
+// when the request arrives via POST method 
+// then we going to require register-process.php 
+// if($_SERVER['REQUEST_METHOD']== 'POST'){
+    
+// }
 
+if(isset($_SESSION['userID'])){
+    
+    print($_SESSION['userID']);
+    $user = get_user_info($Conn,$_SESSION['userID']);
+
+}
+
+// Connecting to our db
+$Conn= $db->con;
 
 $user = array();
 
-if(isset($_SESSION['userID'])){
 
-    // $user = get_user_info($_SESSION['userID']);
-    print($_SESSION['userID']);
-    $user = get_user_info($Conn,$_SESSION['userID']);
+$imgSrc = isset($user['profileImage']) ? $user['profileImage'] : 'assets/instagram-profile-icon-by-Vexels.png';
+
+// Lets create an assoc array wich going to replace the key values in our html  template
+$swap_var = array(
+    "{IMG_SRC}"=>$imgSrc
+);
+
+
+
+if(file_exists('Template\login.template.php')){
+    // we going to parse our template html file as a string basically
+    $html = file_get_contents('Template\login.template.php');
+}else{
+    die("Unable to locate template file");
 }
 
+// SEARCH AND REPLACE ALL THE array keys in the HTML template 
+foreach(array_keys($swap_var) as $key){
+    if(strlen($key)>2 && trim($key) !=""){
+        $html = str_replace($key,$swap_var[$key],$html);
+    }
+}
+
+// Creating a new login page
 $login = new Webpage();
 
-$imgSrc = isset($user['profileImage']) ? $_SESSION['userID'] : 'assets/instagram-profile-icon-by-Vexels.png';
+// Populate its content
+$login->content = $html;
 
-
-$login->content ='<section class="d-flex justify-content-center text-center" id="login">';
-        
-    $login->content .='<div class="row m-0">';
-        $login->content .='<div class="col-lg-4 offset-lg-2">';
-            $login->content .='<div class="text-center pb-5">';
-                $login->content .='<h1 class="login-title text-dark">Login</h1>';
-                $login->content .='<p class="p-1 m-0 font-ubuntu text-black-50">Login and enjoy additional features</p>';
-                $login->content .='<span class="font-ubuntu text-black-50">Create a new<a href="registration.php">Account</a> </span>';
-            $login->content .='</div>';
-            $login->content .='<div class="upload-profile-image d-flex justify-content-center pb-5">';
-                $login->content .='<div class="text-center">';                    
-                
-                    $login->content .="<img src='$imgSrc' style='width:200px;height:200px;background:white' class='img rounded-circle' alt='profile'>";                    
-                    
-                $login->content .='</div>';             
-
-        $login->content .='</div>';
-
-        $login->content .='<div class="d-flex justify-content-center">';
-            $login->content .='<form action="login.php"  method="post" enctype="multipart/form-data" id="login-form">';
-                
-                    $login->content .='<div class="form-row my-4">';
-                        $login->content .='<div class="col">';
-                            $login->content .="<input type='email' required name='email' id='email' class='form-control' placeholder='Email'>";
-                            $login->content .='</div>';
-                        $login->content .='</div>'; 
-
-                    $login->content .='<div class="form-row my-4">';
-                        $login->content .='<div class="col">';
-                            $login->content .='<input type="password" required name="password" id="password" class="form-control" placeholder="Password">';
-                        $login->content .='</div>';
-                    $login->content .='</div>';                    
-                   
-                    $login->content .='<div class="submit-btn text-center my-5">';
-                        $login->content .='<button type="submit" class="btn btn-warning rounded-pill text-dark px-5">Login</button>';
-                    $login->content .='</div>';
-                $login->content .='</form>';
-
-        $login->content .='</div>';
-
-    $login->content .='</div>';
-
-$login->content .='</div>';
-$login->content .='</section>';
-
-
+// Lets display our content
 $login->Display();
 
-// $Conn->close();
+// Close the connection
+$Conn->close();
 
 
 ?>

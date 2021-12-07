@@ -1,14 +1,15 @@
 <?php
 
-session_start();
+// session_start();
+
 require('webpage.php');
-// lets connect to our mysqli databas
-require('db_connect.php');
+require('functions.php');
 require('input_validator.php');
 
-    $Conn;
-    ConnectDB($Conn); // csatlakozás
+// Connecting to our db
+$Conn= $db->con;
 
+    
     //check if the form was submitted
     if(isset($_POST['submit']) && isset($_FILES['poster'])){
         // lets validate the entries
@@ -67,22 +68,20 @@ require('input_validator.php');
 
     }
 
-    CloseDB($Conn); // kapcoslat bontása
-
-
-
+    
 # Lets initalize our Webpage
 $add = new Webpage();
 
 
 //  lets crate a form to a new movie
+$add->content ="<h4 class='center  red-text'>+ Add a Movie</h4>";
 
-$add->content ="<section class='container section text-info' style='background-color:rgba(0,0,0,0.7);' >";
+$add->content .="<section class='container section text-info' style='background-color:rgba(0,0,0,0.7);' >";
 
 #we set the content to display
-$add->content .= "<h2 class='text-info'>Welcome to PHP Picture Palace</h2>";
+// $add->content .= "<h2 class='text-info'>Welcome to PHP Picture Palace</h2>";
 
-        $add->content .="<h4 class='center  red-text'>+ Add a Movie</h4>";
+        
 
         //  We want the add.phph file to handle this request
         //  We going to use PHP_SELF in the action attribute

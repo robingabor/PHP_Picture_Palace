@@ -1,9 +1,8 @@
 <?php
 
-require('db_connect.php');
+require('functions.php');
 
-$Conn;
-ConnectDB($Conn); // csatlakozás
+$Conn = $db->con; // csatlakozás
 
 $output ="";
 
@@ -59,8 +58,7 @@ if(isset($_POST['action'])){
                             </div>
                                 <div class='overlay2'>
                                     
-                                    <button class=' btn btn-warning my-5 '><a href='details.php?id=".$row['id']."'>Book your seats</a></button>
-                                    <button class=' btn btn-warning my-5 '><a href='mail_sender.php'>Send me a mail</a></button> 
+                                    <button class=' btn btn-warning my-5 '><a href='details.php?id=".$row['id']."'>Book your seats</a></button>                                    
                                     <h3>Description: </h3>
                                     <div class='text m-1'>".$row['description']."</div>                                 
                                     

@@ -22,9 +22,9 @@ class InputValidator{
         }else{
             $this->data =$post_data;
             $this->files = $files_data;
-        }
-        
+        }        
     }
+
     // adding error if needed
     private function addError($key, $val){
         $this->errors[$key] = $val;
@@ -35,10 +35,10 @@ class InputValidator{
         if(empty($input)){
             $this->addError($input,"A(n) $input is required");
         }
-        //whitespace karakterek eltávolítása
-        $input = trim($input);
+        
+        $input = trim($input);          //renove whitespaces from the beginning and end of a string
         $input = stripslashes($input); // removes backslashes
-        $input = htmlspecialchars($input);
+        $input = htmlspecialchars($input); // Preventing XSS hacks
 
         return $input;
     }
@@ -66,17 +66,18 @@ class InputValidator{
         if(empty($input)){
             $this->addError($input,"A(n) $input is required");
         }else{
+            echo "<pre>";
             print_r($input);
              // we going to create an extension array with the extensions we allow to upload
-             $extensions = array('pdf','exe','jpg','png','gif','jpeg');
+             $extensions = array('pdf','jpg','png','gif','jpeg');
              // lets extract the extensions from our files with the use of the explode()
              $file_ext= explode('.',$input['name'][0]);
              print_r($file_ext);                
 
              // the end() function returns the last element of an array
              $file_ext = end($file_ext);
-             // now we have to check if the $file_ext in our array       
-
+             // now we have to check if the $file_ext in our array 
+             print_r($file_ext);
              
              
              if(!in_array($file_ext, $extensions)){

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1:3307
--- Létrehozás ideje: 2021. Nov 01. 22:55
+-- Létrehozás ideje: 2021. Dec 07. 21:02
 -- Kiszolgáló verziója: 10.4.10-MariaDB
 -- PHP verzió: 7.3.12
 
@@ -43,10 +43,10 @@ CREATE TABLE `bookings` (
 --
 
 INSERT INTO `bookings` (`id`, `date`, `timeslot`, `customer_id`, `movie_id`, `total_price`, `seats`) VALUES
-(63, '2020-06-15', '13:20PM-15:00PM', 1, 22, 150, '[0,8]'),
-(64, '2020-06-15', '12:00PM-14:30PM', 1, 21, 100, '[0,1]'),
-(65, '2021-11-01', '09:00AM-11:30AM', 2, 21, 150, '[18,19,28]'),
-(66, '2021-11-01', '09:00AM-11:30AM', 2, 21, 150, '[18,19,28]');
+(69, '2021-12-05', '09:00AM-11:03AM', 4, 26, 150, '[19,20,21]'),
+(70, '2021-12-05', '09:00AM-11:03AM', 4, 26, 150, '[19,20,21]'),
+(71, '2021-12-05', '12:04PM-14:38PM', 4, 27, 150, '[18,19,27]'),
+(77, '2021-12-05', '11:50AM-14:10PM', 4, 28, 150, '[16,17,25]');
 
 -- --------------------------------------------------------
 
@@ -69,7 +69,9 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`id`, `name`, `email`, `password`, `profileImage`, `registerDate`) VALUES
 (1, 'Admin', 'lomutpali@gmail.com', '', '', '2021-11-01 21:36:28'),
-(2, 'robin', 'test@test.hu', '$2y$10$YQCq4mN6Jo5CokV8J0e2XuMSMLChOJeldv.au8oUogYSeq7qWetDS', './assets/profile/icons8-login-as-user-48.png', '2021-11-01 21:39:21');
+(2, 'robin', 'test@test.hu', '$2y$10$YQCq4mN6Jo5CokV8J0e2XuMSMLChOJeldv.au8oUogYSeq7qWetDS', './assets/profile/icons8-login-as-user-48.png', '2021-11-01 21:39:21'),
+(3, 'testUser', 'test@user.com', '$2y$10$72h3Aqb/BAiR5e/rSxl7Ee4oiezXyxz1a6VWOXqFzMzV.QEm8j7dC', './assets/profile/icons8-login-as-user-48.png', '2021-12-02 20:12:11'),
+(4, 'testUser2', 'test@user2.com', '$2y$10$CIy9dY5tejLBJuEVbXjnaOwPLpurnIRZx61X6tm6K744yPAA2mCH6', './assets/profile/b_robin.jpg', '2021-12-05 17:54:45');
 
 -- --------------------------------------------------------
 
@@ -93,8 +95,9 @@ CREATE TABLE `movies` (
 --
 
 INSERT INTO `movies` (`id`, `title`, `description`, `release_date`, `language`, `running_time`, `genre`, `poster`) VALUES
-(21, 'Robin\'s fav', 'Jó film3', '2020-05-13', 'román', 150, 'sokk', 'inglourious-basterds_eda9_720x1280.jpg'),
-(22, 'Tűzvihar', 'egy viharos akció', '2028-06-19', 'román', 100, 'action', 'baby-driver_a597_720x1280.jpg');
+(26, 'NewMovie', 'Kivételes filmremek, ajánlott a megtekintése', '2021-12-02', 'norvég', 123, 'krimi', 'thumbnail_hb_42.167.jpg'),
+(27, 'Ponyvaregény', 'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.', '1994-01-01', 'english', 154, 'crime', 'pulp-fiction_d178_720x1280.jpg'),
+(28, 'The King', 'Hal, wayward prince and heir to the English throne, is crowned King Henry V after his tyrannical father dies. Now the young king must navigate palace politics, the war his father left behind, and the emotional strings of his past life.', '2019-11-25', 'latin', 140, 'history', 'the-king_4a58_720x1280.jpg');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -128,19 +131,19 @@ ALTER TABLE `movies`
 -- AUTO_INCREMENT a táblához `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT a táblához `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT a táblához `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Megkötések a kiírt táblákhoz

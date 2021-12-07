@@ -7,11 +7,13 @@ class Webpage{
     public $content;
     public $title = "PHP Picture Palace";
     public $keywords = array("cinema","movie","booking","premier","popcorn","nachos");
-    public $navbar = array("Homepage" => "index2.php",
+    public $navbar = array("Homepage" => "index.php",
                             "Login" =>"login.php",
                             "Registration"=>"registration.php",
-                            "All Movie"=>"index.php",
+                            "All Movie"=>"allmovie.php",
                             "Add a Movie" =>"add.php");// ezt majd csak az admin láthatja
+    
+    
         
     # METHODS
     //setter
@@ -24,10 +26,11 @@ class Webpage{
         echo "<!DOCTYPE html>";
         echo "<html>";
 
-        echo "<head>";
+        echo "<head >";
             $this->DisplayTitle();
             $this->DisplayDesign();
             $this->DisplaySEO();
+            
         echo "</head>";
 
         echo "<body>";
@@ -44,9 +47,12 @@ class Webpage{
 
         echo "</html>";
     }
-    
+   
+   
     public function DisplayTitle(){
+                    
         echo "<title class='py-5 text-warning'>$this->title</title>";
+        
     }
 
     public function DisplayDesign(){
@@ -57,7 +63,7 @@ class Webpage{
         echo "<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css' integrity='sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk' crossorigin='anonymous'>";
         // echo "<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>";
         // echo "<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>";
-        echo "<link href='style.css' rel='stylesheet' type='text/css'/>";
+        echo "<link href='css/style.css' rel='stylesheet' type='text/css'/>";
         echo "<link href='css/lightslider.css' rel='stylesheet' type='text/css'/>";         
         echo "<script src='https://kit.fontawesome.com/c88e92549b.js' crossorigin='anonymous'></script>";
         
@@ -79,7 +85,8 @@ class Webpage{
             echo "<div class='row justify-content-around'>";
 
                 // Here comes the title
-                echo "<div id='header-title' class='col'>";
+                echo "<div id='header-title' class='col d-flex'>";
+                    echo "<img src='https://img.icons8.com/doodle/96/000000/movie-theater.png' class='mx-5'/>";
                     echo "<h1 class='text-warning' >$this->title</h1>";
                 echo "</div>";
                 
@@ -155,12 +162,15 @@ class Webpage{
 
     public function DisplayFooter(){
         echo "<div id='footer'>";
-            echo "The page made by Robin Gábor";
+        //     echo "The page made by Robin Gábor";
             echo "<script src='https://code.jquery.com/jquery-3.5.1.slim.min.js' integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj' crossorigin='anonymous'></script>";
+            echo "<script src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js'></script>";
             echo "<script src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous'></script>";
             echo "<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js' integrity='sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI' crossorigin='anonymous'></script>";
             echo "<script src='js/lightslider.js' ></script>";
             echo "<script src='js/slider.js' ></script>";
+            // Finally My Custom JS scrtipt
+            echo "<script src='js/script.js'></script>";
         echo "</div>";
 
     }
