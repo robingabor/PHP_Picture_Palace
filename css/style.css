@@ -450,7 +450,7 @@ h3.text span{
     width: 46px;
     height: 48px;
     border: 0;
-    background: url('./local/icons8-film-reel-64-black.png');
+    background: url('../local/icons8-film-reel-64-black.png');
     /* background-color: #cccccc; */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
@@ -462,7 +462,7 @@ h3.text span{
     width: 46px;
     height: 48px;
     border: 0;
-    background: url('./local/icons8-film-reel-64-black.png');
+    background: url('../local/icons8-film-reel-64-black.png');
     /* background-color: #cccccc; */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
@@ -508,6 +508,28 @@ h3.text span{
     position: absolute;   
       top:50%;
   }
+
+  /* Styling for search bar */
+  #search_form{
+    margin: auto;
+    width: 300px;
+    margin: 10px;
+    padding-top: 30px;
+    box-shadow: 0px 0px 10px #aaa;
+    
+}
+
+.search{
+    width: 260px;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid thin #aaa;
+    outline: none;
+}
+
+.hide{
+    display: none;
+}
 
 
 

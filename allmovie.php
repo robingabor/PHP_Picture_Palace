@@ -159,15 +159,17 @@ $index->content .= "</div>";
     $index->content .= "</div>";
 
     // KERESŐ
-    // $index->content .= "<div class=''>";
-    // $index->content .= "<form action='search.php' id='search_form' >";
-    // $index->content .="<label for='myRange'>If you know what you looking for: </label>";
-    // $index->content .="<input type='text' placeholder='Search..' name='search' id='search'>";
-    // $index->content .="<button type='submit' name='submit_search'>@</button>";
-    // $index->content .= "</form>";
-    // $index->content .="</div>";
+    // KERESŐ
+    $index->content .= "<div class=''>";
+        $index->content .= "<form action='search.php' id='search_form'  >";
+            // $index->content .="<label for='myRange'>If you know what you looking for: </label>";
+            $index->content .="<h3 class='text-primary'>Search</h3>";
+            $index->content .="<input type='text' class='search js_search' oninput='get_data(this.value)' placeholder='Search..' name='search' autofocus='true'  >";
+            $index->content .="<div class='results js_results hide'> <div> Result01 </div>  <div>Result02</div> </div>";
+        $index->content .= "</form>";
+        $index->content .="</div>";
 
-    $index->content .= "</br>";
+        $index->content .= "</br>";
     $index->content .= "</div>";
 
     
@@ -259,15 +261,68 @@ $(document).ready(function(){
     // running time
     $('form input').change(function() {
         filter_data();
-    });
-
-   
-
-
-    
+    });    
 
 });
 
+
+// script for search bar
+function get_data(text){
+      
+       
+    // if we want to send more than one value then we need a form object and then append to it the needed contents
+    var form = new FormData();
+    form.append('text',text);
+
+    var ajax  = new XMLHttpRequest();
+
+    // listening to the readystatechange event
+    // when we initailize the ajax object its state is 0, when we open it it is 1, sending is 2-3, the state we are looking for is 4 that is when the result is back
+    ajax.addEventListener('readystatechange',(e)=>{
+        if(ajax.readyState == 4 && ajax.status == 200){
+
+            // result are back
+            handle_result(ajax.responseText);
+        }
+    });
+    // whatever we echo in our php file that going to return as a  result
+    ajax.open('post','api.php',true);
+    // finally we send the form itself
+    ajax.send(form);
+
+}
+
+function handle_result(result){
+    console.log(result);
+    var obj = JSON.parse(result);
+    var str = "";
+    var result_div = document.querySelector('.js_results');
+
+    for(var i = obj.length -1; i >=0; i--){
+        
+        str += "<a href='details.php?id="+obj[i].id+"'><div>" + obj[i].title + "</div></a>";
+    }
+
+    result_div.innerHTML = str;
+
+    if(obj.length > 0){
+        show_results();
+    }else{
+        hide_results();
+    }
+    
+}
+
+function hide_results(){
+    var result_div = document.querySelector('.js_results');
+    result_div.classList.add("hide");
+}
+
+function show_results(){
+    var result_div = document.querySelector('.js_results');
+    result_div.classList.remove("hide");
+
+}
 
 // Update the current slider value (each time you drag the slider handle)
 // slider.oninput = function() {    
