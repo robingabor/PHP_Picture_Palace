@@ -2,7 +2,7 @@
 
 session_start();
 
-session_unset( $_SESSION['userID']);
+session_unset( );
 
 $_SESSION = array();
 

@@ -44,8 +44,8 @@ if(isset($_POST['submit'])){
         $hashed_pass = password_hash($password, PASSWORD_DEFAULT);
         
         // make a query
-        $query = "INSERT INTO customer(id,name,email,password,profileImage,registerDate)";
-        $query .= "VALUES('',?,?,?,?,NOW())";
+        $query = "INSERT INTO customer(name,email,password,profileImage,registerDate)";
+        $query .= "VALUES(?,?,?,?,NOW())";
         // initialize the statement
         $q = mysqli_stmt_init($Conn);
 

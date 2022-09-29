@@ -48,7 +48,7 @@ class Bookings{
                 // we going to use prepared statement
                 $stmt = $this->db->con->prepare("INSERT INTO $table($keys)
                                         VALUES(?,?,?,?,?,?)");
-                $stmt->bind_param('ssssss',$values[0],$values[1],$values[2],$values[3],$values[4],$values[5]);
+                $stmt->bind_param('ssssis',$values[0],$values[1],$values[2],$values[3],$values[4],$values[5]);
                 //execute
                 $stmt->execute();
                 $stmt->close();     

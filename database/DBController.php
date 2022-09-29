@@ -6,7 +6,7 @@
         protected $user = "root";
         protected $password = "";
         protected $database = "cinema2";
-        protected $port = 3307;
+        protected $port = 3306;
         // Connection property
         public $con = null;
 

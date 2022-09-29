@@ -74,9 +74,9 @@ $add = new Webpage();
 
 
 //  lets crate a form to a new movie
-$add->content ="<h4 class='center  red-text'>+ Add a Movie</h4>";
+$add->content ="<h2 class='center my-3 text-white'>+ Add a Movie</h2>";
 
-$add->content .="<section class='container section text-info' style='background-color:rgba(0,0,0,0.7);' >";
+$add->content .="<section class='container section rounded-lg shadow-lg text-info ' style='background-color:rgba(0,0,0,0.7);' >";
 
 #we set the content to display
 // $add->content .= "<h2 class='text-info'>Welcome to PHP Picture Palace</h2>";
@@ -89,7 +89,7 @@ $add->content .="<section class='container section text-info' style='background-
         $add->content .= "<form action=". $_SERVER['PHP_SELF']." method='POST' enctype='multipart/form-data' class=' light-green accent-1'>";
         
         $add->content .="<label>The Title of the Movie</label>";
-        $add->content .="<input type='text' name='title' class='form-control'  >";
+        $add->content .="<input type='text' name='title' class='form-control'   >";
         $add->content .="<div class='red-text'></div>";
 
         $add->content .="<label>Description:</label>";

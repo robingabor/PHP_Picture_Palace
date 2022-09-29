@@ -63,7 +63,7 @@ $details->content = "<section class='section d-block'>";
 
 $details->content .="<h2 class='py-5 tect-center text-white'>Movie Details<h2>";
 
-$details->content .="<div class='container rounded' style='background-color:#ffbb33;'>";
+$details->content .="<div class='container rounded' style='background-color:#ffbb33;height:100%'>";
 // $details->content .="<div class='container rounded' style='background-image:url(web/".$movie['poster'].");opacity: 0.8;background-repeat: no-repeat;background-position: center;'   >";
 
 // $details->content .= "<center><h1 class='p-2' style='color:#0d47a1;filter: hue-rotate(0deg)'>Movie Details</h1></center>";
@@ -74,34 +74,34 @@ if($movie){
    $details->content .="<div class='table-responsive py-5'>";
     $details->content .="<table class='table table-borderless w-75 column justify-content-around'>";
 
-        $details->content .="<tr>";
+        $details->content .="<tr >";
             // $details->content .="<td rowspan='6' class='slide-img img-fluid'><img src='web/".$movie['poster']."' class='w-50 mx-auto d-block' ></td>";
             $details->content .="<td rowspan='6' class='slide-img img-fluid w-25'><img src='web/".$movie['poster']."'  ></td>";
             $details->content .="<td class='font-weight-bold  text-info' >Title:</td>";
             $details->content .="<td><h4 style='color:white;font-weight:bold;'>".htmlspecialchars($movie['title'])."</h4></td>";
         $details->content .="</tr>";
 
-        $details->content .="<tr>";            
+        $details->content .="<tr >";            
             $details->content .="<td class='font-weight-bold  text-info' >Release Date:</td>";    
             $details->content .="<td><h4 style='color:white;font-weight:bold;'>".htmlspecialchars($movie['release_date'])."</h4></td>";
         $details->content .="</tr>";
 
-        $details->content .="<tr>";            
+        $details->content .="<tr >";            
             $details->content .="<td class='font-weight-bold  text-info' >Description:</td>"; 
             $details->content .="<td><h4 style='color:white;font-weight:bold;'>".htmlspecialchars($movie['description'])."</h4></td>";
         $details->content .="</tr>";
 
-        $details->content .="<tr>";            
+        $details->content .="<tr >";            
             $details->content .="<td class='font-weight-bold  text-info' >Language:</td>"; 
             $details->content .="<td><h4 style='color:white;font-weight:bold;'>".htmlspecialchars($movie['language'])."</h4></td>";
         $details->content .="</tr>";
 
-        $details->content .="<tr>";            
+        $details->content .="<tr >";            
             $details->content .="<td class='font-weight-bold  text-info' >Running Time(MIN):</td>";
             $details->content .="<td><h4 style='color:white;font-weight:bold;'>".htmlspecialchars($movie['running_time'])."</h4></td>";
         $details->content .="</tr>";
 
-        $details->content .="<tr>";             
+        $details->content .="<tr >";             
             $details->content .="<td class='font-weight-bold  text-info' >Genre:</td>";
             $details->content .="<td><h4 style='color:white;font-weight:bold;'>".htmlspecialchars($movie['genre'])."</h4></td>";
         $details->content .="</tr>";

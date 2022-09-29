@@ -53,7 +53,7 @@
                                             <th >TIMESLOT</th>
                                         </tr>
                                         <tr>
-                                            <td><input readonly name='timeslot' class='border-0 ' style="text-align:left;width:275px" value="<?php echo $_SESSION['booking_movie']['timeslot'] ?>" ></td>
+                                            <td><input readonly name='timeslot' class='border-0' style="text-align:left;width:275px" value="<?php echo $_SESSION['booking_movie']['timeslot'] ?>" ></td>
                                         </tr>
                                     </table>
                                     </div>
@@ -66,7 +66,7 @@
 
                                 <!-- Confirm btn -->
                                 <div class='form-group d-flex justify-content-center'>                                  
-                                   <input id='confirm' value='Confirm' class='btn btn-white text-center' type='submit' name='submit'></input>
+                                   <input id='confirm' value='Confirm' class='btn btn-white text-center py-3 border-3 border-primary' type='submit' name='submit'></input>
                                 </div>                         
 
                             </form>    
